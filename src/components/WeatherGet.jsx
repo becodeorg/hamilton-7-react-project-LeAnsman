@@ -7,6 +7,7 @@ const WeatherInput = ({
   setCityInformations,
   setWeatherInformations,
   setCurrentWeatherInformations,
+  setForecastArr,
 }) => {
   const inputRef = useRef();
 
@@ -71,6 +72,13 @@ const WeatherInput = ({
       .then((res) => {
         setWeatherInformations(res.data.list);
         setCurrentWeatherInformations(res.data.list[0]);
+        setForecastArr([
+          res.data.list[8],
+          res.data.list[16],
+          res.data.list[24],
+          res.data.list[32],
+          res.data.list[39],
+        ]);
         setCityInformations(res.data.city);
         inputRef.current.value = "";
       });

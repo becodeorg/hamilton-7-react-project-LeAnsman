@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import WeatherDisplay from "./components/WeatherDisplay";
 import WeatherGet from "./components/WeatherGet";
+import ForecastList from "./components/ForecastList";
 
 function App() {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState();
   const [cityInformations, setCityInformations] = useState([]);
   const [weatherInformations, setWeatherInformations] = useState([]);
   const [currentWeatherInformations, setCurrentWeatherInformations] = useState(
     []
   );
+  const [forecastArr, setForecastArr] = useState();
 
   return (
     <div className="App">
@@ -23,12 +25,19 @@ function App() {
         weatherInformations={weatherInformations}
         setWeatherInformations={setWeatherInformations}
         setCurrentWeatherInformations={setCurrentWeatherInformations}
+        setForecastArr={setForecastArr}
       />
       <WeatherDisplay
         cityInformations={cityInformations}
         city={city}
         weatherInformations={weatherInformations}
         currentWeatherInformations={currentWeatherInformations}
+        forecastArr={forecastArr}
+      />
+      {/* If there is a forecastArr then --> */}
+      <ForecastList
+        forecastArr={forecastArr}
+        weatherInformations={weatherInformations}
       />
     </div>
   );
