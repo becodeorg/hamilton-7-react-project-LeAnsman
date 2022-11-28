@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 
 const WeatherInput = ({
@@ -6,10 +6,9 @@ const WeatherInput = ({
   setCity,
   setCityInformations,
   setWeatherInformations,
+  setCurrentWeatherInformations,
 }) => {
   const inputRef = useRef();
-
-  const initialRender = useRef(true);
 
   let latitude = "";
   let longitude = "";
@@ -49,6 +48,7 @@ const WeatherInput = ({
 
   const onChangeHandler = () => {
     setCity(inputRef.current.value);
+    setWeatherInformations([]);
   };
 
   const getCityInfo = async (e) => {
@@ -70,7 +70,9 @@ const WeatherInput = ({
       )
       .then((res) => {
         setWeatherInformations(res.data.list);
+        setCurrentWeatherInformations(res.data.list[0]);
         setCityInformations(res.data.city);
+        inputRef.current.value = "";
       });
   };
 
