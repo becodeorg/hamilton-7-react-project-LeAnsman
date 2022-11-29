@@ -13,7 +13,7 @@ const WeatherDisplay = ({
           <div className="TOP flex justify-between p-5 space-y-2">
             <div className="flex flex-col justify-evenly">
               <h2 className="text-lg sm:text-2xl capitalize font-medium">
-                {city} , {cityInformations.country}
+                {currentWeatherInformations.city}
               </h2>
               <p className="capitalize font-medium">
                 {currentWeatherInformations.weather[0].description}
