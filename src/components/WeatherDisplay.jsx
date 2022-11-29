@@ -9,16 +9,18 @@ const WeatherDisplay = ({
   <div>
     {weatherInformations.length > 0 && (
       <>
-        <div className="flex flex-col w-2/4 mx-auto rounded-lg shadow-lg text-indigo-900">
+        <div className="flex flex-col w-3/4 md:w-1/2 mx-auto rounded-lg shadow-lg text-indigo-900">
           <div className="TOP flex justify-between p-5 space-y-2">
             <div className="flex flex-col justify-evenly">
-              <h2 className="text-xl capitalize">
+              <h2 className="text-lg sm:text-2xl capitalize font-medium">
                 {city} , {cityInformations.country}
               </h2>
-              <p className="capitalize">
+              <p className="capitalize font-medium">
                 {currentWeatherInformations.weather[0].description}
               </p>
-              <p>{Math.round(currentWeatherInformations.main.temp)} °C</p>
+              <p className="font-medium text-xl">
+                {Math.round(currentWeatherInformations.main.temp)} °C
+              </p>
             </div>
             <div>
               <img
@@ -29,15 +31,15 @@ const WeatherDisplay = ({
           </div>
           <div className="BOTTOM p-5 bg-purple-200 space-y-2">
             <div className="flex justify-between">
-              <p>Wind</p>
+              <p className="underline underline-offset-2">Wind</p>
               <p>{currentWeatherInformations.wind.speed} m/s</p>
             </div>
             <div className="flex justify-between">
-              <p>Humidity</p>
+              <p className="underline underline-offset-2">Humidity</p>
               <p>{currentWeatherInformations.main.humidity} %</p>
             </div>
             <div className="flex justify-between">
-              <p>Pressure</p>
+              <p className="underline underline-offset-2">Pressure</p>
               <p>{currentWeatherInformations.main.pressure} hPa</p>
             </div>
           </div>

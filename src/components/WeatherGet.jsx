@@ -88,7 +88,7 @@ const WeatherInput = ({
     <div>
       <form className="p-5 flex justify-center">
         <input
-          className="px-4 py-2 border-2 border-purple-600 rounded-l-lg focus:outline-none"
+          className="px-4 py-2 border-2 border-purple-600 rounded-l-lg focus:outline-none w-full sm:w-[511px]"
           type="text"
           placeholder="Type the city"
           ref={inputRef}

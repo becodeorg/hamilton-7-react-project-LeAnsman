@@ -34,7 +34,6 @@ function App() {
         currentWeatherInformations={currentWeatherInformations}
         forecastArr={forecastArr}
       />
-      {/* If there is a forecastArr then --> */}
       <ForecastList
         forecastArr={forecastArr}
         weatherInformations={weatherInformations}
