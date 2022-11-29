@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { AsyncPaginate } from "react-select-async-paginate";
 
-const WeatherSearch = ({ onSearchChange, lat, lon }) => {
+const WeatherSearch = ({ onSearchChange }) => {
   const geoApiOptions = {
     method: "GET",
     headers: {
@@ -29,7 +28,6 @@ const WeatherSearch = ({ onSearchChange, lat, lon }) => {
           };
         }),
       };
-      
     } catch (err) {
       return console.error(err);
     }
@@ -38,8 +36,6 @@ const WeatherSearch = ({ onSearchChange, lat, lon }) => {
   const onChangeHandler = async (searchData) => {
     setSearch(searchData);
     onSearchChange(searchData);
-
-    
   };
 
   return (

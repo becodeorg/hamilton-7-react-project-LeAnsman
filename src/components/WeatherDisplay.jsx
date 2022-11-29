@@ -1,16 +1,14 @@
 import React from "react";
 
 const WeatherDisplay = ({
-  cityInformations,
-  city,
   weatherInformations,
   currentWeatherInformations,
 }) => (
   <div>
     {weatherInformations.length > 0 && (
       <>
-        <div className="flex flex-col w-3/4 md:w-1/2 mx-auto rounded-lg shadow-lg text-indigo-900">
-          <div className="TOP flex justify-between p-5 space-y-2">
+        <div className="flex flex-col w-3/4 md:w-1/2 mx-auto rounded-lg shadow-lg text-indigo-900 mt-8">
+          <div className="TOP flex justify-between p-5 space-y-2 bg-white">
             <div className="flex flex-col justify-evenly">
               <h2 className="text-lg sm:text-2xl capitalize font-medium">
                 {currentWeatherInformations.city}

@@ -8,7 +8,7 @@ const forecastList = ({ forecastArr, weatherInformations }) => {
       {weatherInformations.length > 0 && (
         <>
           {/* <ul>{weatherInformations.length > 0 && <ForecastWeather forecastArr={forecastArr} />}</ul> */}
-          <ul className="flex flex-col items-center my-5 gap-5">
+          <ul className="flex flex-col items-center py-5 gap-5">
             {/* If there is a forecastArr then --> */}
             {forecastArr?.map((day) => (
               <ForecastWeather day={day} id={day.dt} />
