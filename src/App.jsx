@@ -13,11 +13,13 @@ function App() {
   );
   const [forecastArr, setForecastArr] = useState();
   const [bgImg, setBgImg] = useState();
+  const [loading, setLoading] = useState(false);
 
   const onSearchChangeHandler = async (searchData) => {
     const cityQuery = searchData.label.split(",");
     const coordinates = searchData.value.split(" ");
     try {
+      setLoading(true);
       await axios
         .get(
           `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates[0]}&lon=${coordinates[1]}&units=metric&appid=e18fa0a15f3c9567b66e08d31f967278`
@@ -44,7 +46,10 @@ function App() {
         .get(
           `https://api.unsplash.com/search/photos/?client_id=vgw0C7QO3BY1v-mDtsl0zrYrESFbevS_OVXlid1yX78&query=${cityQuery[0]}`
         )
-        .then((res) => setBgImg(res.data.results[1].urls.regular));
+        .then((res) => {
+          setBgImg(res.data.results[1].urls.regular);
+          setLoading(false);
+        });
     } catch (err) {
       return console.error(err);
     }
@@ -58,15 +63,22 @@ function App() {
   };
 
   return (
-    <div
-      className="App bg-no-repeat bg-cover"
-      style={{ backgroundImage: `url(${bgImg})` }}
-    >
-      <h1 className="p-5 text-2xl font-medium bg-purple-200 text-indigo-900 mb-5">
+    <div className="App ">
+      <h1 className="p-5 text-2xl font-medium bg-purple-200 text-indigo-900">
         Weather app
       </h1>
-      <WeatherSearch onSearchChange={onSearchChangeHandler} />
-      {/* <WeatherGet
+      {loading ? (
+        <div className="LOADER_CONTAINER w-full h-3/4 flex justify-center items-center fixed z-10">
+          <div className="SPINNER absolute w-40 h-40 rounded-full  bg-gradient-to-r p-[6px] from-transparent via-transparent to-slate-200 animate-spin"></div>
+          <div className="SPINNER w-32 h-32 rounded-full  bg-white z-10"></div>
+        </div>
+      ) : (
+        <div
+          className="CONTAINER bg-no-repeat bg-cover animate-appearIn"
+          style={{ backgroundImage: `url(${bgImg})` }}
+        >
+          <WeatherSearch onSearchChange={onSearchChangeHandler} />
+          {/* <WeatherGet
         city={city}
         setCity={setCity}
         cityInformations={cityInformations}
@@ -76,18 +88,19 @@ function App() {
         setCurrentWeatherInformations={setCurrentWeatherInformations}
         setForecastArr={setForecastArr}
       /> */}
-      <WeatherDisplay
-        cityInformations={cityInformations}
-        // city={city}
-        weatherInformations={weatherInformations}
-        currentWeatherInformations={currentWeatherInformations}
-        forecastArr={forecastArr}
-      />
-      <ForecastList
-        forecastArr={forecastArr}
-        weatherInformations={weatherInformations}
-      />
-      {/* <BackgroundImage /> */}
+          <WeatherDisplay
+            cityInformations={cityInformations}
+            // city={city}
+            weatherInformations={weatherInformations}
+            currentWeatherInformations={currentWeatherInformations}
+            forecastArr={forecastArr}
+          />
+          <ForecastList
+            forecastArr={forecastArr}
+            weatherInformations={weatherInformations}
+          />
+        </div>
+      )}
     </div>
   );
 }

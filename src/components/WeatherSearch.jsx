@@ -41,7 +41,7 @@ const WeatherSearch = ({ onSearchChange }) => {
   return (
     <div>
       <AsyncPaginate
-        className="w-3/4 mx-auto"
+        className="w-3/4 mx-auto pt-5"
         placeholder="Search for a city"
         // don't call the fetch every time a key is pressed
         debounceTimeout={600}
