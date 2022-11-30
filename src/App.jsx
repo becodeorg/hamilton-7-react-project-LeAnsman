@@ -47,7 +47,7 @@ function App() {
           `https://api.unsplash.com/search/photos/?client_id=vgw0C7QO3BY1v-mDtsl0zrYrESFbevS_OVXlid1yX78&query=${cityQuery[0]}`
         )
         .then((res) => {
-          setBgImg(res.data.results[1].urls.regular);
+          setBgImg(res.data.results[0].urls.regular);
           setLoading(false);
         });
     } catch (err) {
@@ -79,14 +79,14 @@ function App() {
         >
           <WeatherSearch onSearchChange={onSearchChangeHandler} />
           {/* <WeatherGet
-        city={city}
-        setCity={setCity}
-        cityInformations={cityInformations}
-        setCityInformations={setCityInformations}
-        weatherInformations={weatherInformations}
-        setWeatherInformations={setWeatherInformations}
-        setCurrentWeatherInformations={setCurrentWeatherInformations}
-        setForecastArr={setForecastArr}
+            city={city}
+            setCity={setCity}
+            cityInformations={cityInformations}
+            setCityInformations={setCityInformations}
+            weatherInformations={weatherInformations}
+            setWeatherInformations={setWeatherInformations}
+            setCurrentWeatherInformations={setCurrentWeatherInformations}
+            setForecastArr={setForecastArr}
       /> */}
           <WeatherDisplay
             cityInformations={cityInformations}
