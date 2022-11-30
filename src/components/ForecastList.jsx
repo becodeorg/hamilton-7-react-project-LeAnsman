@@ -11,7 +11,7 @@ const forecastList = ({ forecastArr, weatherInformations }) => {
           <ul className="flex flex-col items-center py-5 gap-5">
             {/* If there is a forecastArr then --> */}
             {forecastArr?.map((day) => (
-              <ForecastWeather day={day} id={day.dt} />
+              <ForecastWeather day={day} key={day.dt} />
             ))}
           </ul>
         </>

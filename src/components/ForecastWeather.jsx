@@ -1,12 +1,11 @@
 import React from "react";
 
-const ForecastWeather = ({ day, id }) => {
+const ForecastWeather = ({ day }) => {
   // console.log(forecastArr[0].main.feels_like);
   // console.log(id);
   return (
     // Switch to grid to get the responsive to be better looking ?
     <li
-      key={id}
       className="flex flex-wrap items-center justify-between bg-purple-300 xl:w-1/2 shadow-lg gap-5 w-3/4 text-indigo-900 p-5"
     >
       <p className="underline underline-offset-4">

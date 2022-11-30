@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 
 const WeatherSearch = ({ onSearchChange }) => {
+  const [search, setSearch] = useState(null);
+
   const geoApiOptions = {
     method: "GET",
     headers: {
@@ -9,8 +11,6 @@ const WeatherSearch = ({ onSearchChange }) => {
       "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
     },
   };
-
-  const [search, setSearch] = useState(null);
 
   const loadOptions = async (inputValue) => {
     // look in network to see that the fetch is actually successful
